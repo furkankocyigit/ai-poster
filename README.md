@@ -1,6 +1,9 @@
 # AI Picture Generator for Instagram
 
-This project leverages TypeScript and Node.js to interact with the OpenAI API, converting text input into AI-generated images. These images are then seamlessly posted to an Instagram account using the Instagram Private API.
+This project leverages TypeScript and Node.js to interact with the OpenAI API, converting text input into AI-generated images. These images are then seamlessly posted to an Instagram account using the Instagram Private API.  
+<br />
+You can see the testing Instagram account at the https://www.instagram.com/aipictureposter/  
+Creation prompt texts are automatically added to the posts as captions.
 
 ### Prerequisites
 
