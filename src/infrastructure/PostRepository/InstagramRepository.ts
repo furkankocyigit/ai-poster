@@ -1,7 +1,7 @@
 import { inject, injectable } from 'inversify';
 import { IPostRepository } from './IPostRepository';
 import { IgApiClient } from 'instagram-private-api';
-import { CONSTANTS, INSTANCES } from '../config/identifiers';
+import { CONSTANTS, INSTANCES } from '../../config/identifiers';
 
 @injectable()
 export class InstagramPostRepository implements IPostRepository {
