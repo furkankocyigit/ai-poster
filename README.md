@@ -52,7 +52,7 @@ Create a `.env` file in the root folder and set the following environment variab
 ### Contributing
 
 Contributions are welcome! Feel free to fork the repository and submit pull requests to enhance the functionality or fix any issues.
-1. Fork the project
+1. Either fork the project or add a feature in here
 2. Create your feature branch (**git checkout -b feature/YourFeature**)
 3. Commit your changes (**git commit -am 'Add your feature'**).
 4. Push to the branch (**git push origin feature/YourFeature**).
