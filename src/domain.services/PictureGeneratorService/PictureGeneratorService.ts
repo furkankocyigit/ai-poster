@@ -1,5 +1,5 @@
 import { inject, injectable } from 'inversify';
-import { IPictureRepository } from '../../infrastructure/IPictureRepository';
+import { IPictureRepository } from '../../infrastructure';
 import { IPictureGeneratorService } from './IPictureGeneratorService';
 import { REPOSITORIES } from '../../config/identifiers';
 

@@ -1,7 +1,7 @@
 import { inject, injectable } from 'inversify';
 import { IPostService } from './IPostService';
 import { REPOSITORIES } from '../../config/identifiers';
-import { IPostRepository } from '../../infrastructure/IPostRepository';
+import { IPostRepository } from '../../infrastructure';
 
 @injectable()
 export class PostService implements IPostService {

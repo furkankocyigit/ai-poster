@@ -1,19 +1,12 @@
 import 'reflect-metadata';
 import { Container } from 'inversify';
-import { IPictureRepository } from '../infrastructure/IPictureRepository';
 import { CONSTANTS, CONTROLLERS, INSTANCES, REPOSITORIES, SERVICES } from './identifiers';
-import { EnvExporter } from '../utils/EnvExporter';
 import OpenAI from 'openai';
-import { OpenAIPicturRepository } from '../infrastructure/OpenAIPictureRepository';
-import { IPictureGeneratorService } from '../domain.services/IPictureGeneratorService';
-import { PictureGeneratorService } from '../domain.services/PictureGeneratorService';
-import { IPostRepository } from '../infrastructure/IPostRepository';
-import { InstagramPostRepository } from '../infrastructure/InstagramRepository';
 import { IgApiClient } from 'instagram-private-api';
-import { IPostService } from '../domain.services/IPostService';
-import { PostService } from '../domain.services/PostService';
-import { PictureController } from '../application/controllers/PictureController';
-import { ChatController } from '../application/controllers/ChatController';
+import { OpenAIPicturRepository, InstagramPostRepository, IPostRepository, IPictureRepository } from '../infrastructure';
+import { IPictureGeneratorService, PictureGeneratorService, IPostService, PostService } from '../domain.services';
+import { PictureController, ChatController } from '../application/controllers';
+import { EnvExporter } from '../utils/EnvExporter';
 
 const OPENAI_API_KEY = EnvExporter.export('OPENAI_API_KEY');
 const IG_USERNAME = EnvExporter.export('IG_USERNAME');
