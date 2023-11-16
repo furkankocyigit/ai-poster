@@ -5,6 +5,7 @@ import OpenAI from 'openai';
 import { IgApiClient } from 'instagram-private-api';
 import { OpenAIPicturRepository, InstagramPostRepository, IPostRepository, IPictureRepository } from '../infrastructure';
 import { IPictureGeneratorService, PictureGeneratorService, IPostService, PostService } from '../domain.services';
+import { IPictureToBufferService, PictureToBufferService } from '../domain.services';
 import { PictureController, ChatController } from '../application/controllers';
 import { EnvExporter } from '../utils/EnvExporter';
 
@@ -25,6 +26,7 @@ diContainer.bind<IPictureGeneratorService>(SERVICES.PictureGeneratorService).to(
 
 diContainer.bind<IPostRepository>(REPOSITORIES.PostRepository).to(InstagramPostRepository).inSingletonScope();
 diContainer.bind<IPostService>(SERVICES.PostService).to(PostService).inSingletonScope();
+diContainer.bind<IPictureToBufferService>(SERVICES.PictureToBufferService).to(PictureToBufferService).inSingletonScope();
 
 diContainer.bind<PictureController>(CONTROLLERS.PictureController).to(PictureController).inSingletonScope();
 diContainer.bind<ChatController>(CONTROLLERS.ChatController).to(ChatController).inSingletonScope();

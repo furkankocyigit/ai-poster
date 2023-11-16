@@ -16,6 +16,7 @@ export const REPOSITORIES = {
 export const SERVICES = {
     PictureGeneratorService: Symbol.for('PictureGeneratorService'),
     PostService: Symbol.for('PostService'),
+    PictureToBufferService: Symbol.for('PictureToBufferService'),
 };
 
 export const CONTROLLERS = {
