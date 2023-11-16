@@ -1,26 +1,23 @@
 import { Request, Response, NextFunction } from 'express';
-import { IgApiClient } from 'instagram-private-api';
-import OpenAI from 'openai';
 import sharp from 'sharp';
 const { get } = require('request-promise');
 import 'dotenv/config';
-import { EnvExporter } from '../../utils/EnvExporter';
 import { IPictureGeneratorService } from '../../domain.services/IPictureGeneratorService';
-import { diContainer } from '../../config/inversify.config';
 import { SERVICES } from '../../config/identifiers';
+import { IPostService } from '../../domain.services/IPostService';
+import { inject, injectable } from 'inversify';
 
-const defaultTags = ' #ai #aipictures #generatedbyai ';
-const IG_USERNAME = EnvExporter.export('IG_USERNAME');
-const IG_PASSWORD = EnvExporter.export('IG_PASSWORD');
-
+@injectable()
 export class PictureController {
     private pictureGeneratorService: IPictureGeneratorService;
-    private ig: IgApiClient;
+    private postService: IPostService;
 
-    constructor() {
-        this.pictureGeneratorService = diContainer.get<IPictureGeneratorService>(SERVICES.PictureGeneratorService);
-        this.ig = new IgApiClient();
-        this.ig.state.generateDevice(IG_USERNAME);
+    constructor(
+        @inject(SERVICES.PictureGeneratorService) pictureGeneratorService: IPictureGeneratorService,
+        @inject(SERVICES.PostService) postService: IPostService
+    ) {
+        this.pictureGeneratorService = pictureGeneratorService;
+        this.postService = postService;
     }
 
     postPicture = async (req: Request, res: Response, next: NextFunction) => {
@@ -32,12 +29,8 @@ export class PictureController {
                 encoding: null,
             });
             const resizedPictureBuffer = await sharp(imageBuffer).resize(1696, 1064).jpeg().toBuffer();
-            await this.ig.account.login(IG_USERNAME, IG_PASSWORD);
-            await this.ig.publish.photo({
-                file: resizedPictureBuffer,
-                caption: creationText + defaultTags,
-            });
-            res.send('picture is shared: ' + pictureUrl);
+            const postID = await this.postService.postPicture(resizedPictureBuffer, creationText);
+            res.send('picture is shared with id: ' + postID + ' url: ' + pictureUrl);
         } catch (err) {
             next(err);
         }
