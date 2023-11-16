@@ -1,7 +1,7 @@
 import OpenAI from 'openai';
 import { IPictureRepository } from './IPictureRepository';
 import { inject, injectable } from 'inversify';
-import { INSTANCES } from '../config/identifiers';
+import { INSTANCES } from '../../config/identifiers';
 
 @injectable()
 export class OpenAIPicturRepository implements IPictureRepository {

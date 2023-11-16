@@ -2,9 +2,8 @@ import { Request, Response, NextFunction } from 'express';
 import sharp from 'sharp';
 const { get } = require('request-promise');
 import 'dotenv/config';
-import { IPictureGeneratorService } from '../../domain.services/IPictureGeneratorService';
+import { IPictureGeneratorService, IPostService } from '../../domain.services';
 import { SERVICES } from '../../config/identifiers';
-import { IPostService } from '../../domain.services/IPostService';
 import { inject, injectable } from 'inversify';
 
 @injectable()

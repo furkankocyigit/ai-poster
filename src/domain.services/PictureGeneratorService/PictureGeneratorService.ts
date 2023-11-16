@@ -1,7 +1,7 @@
 import { inject, injectable } from 'inversify';
-import { IPictureRepository } from '../infrastructure/IPictureRepository';
+import { IPictureRepository } from '../../infrastructure';
 import { IPictureGeneratorService } from './IPictureGeneratorService';
-import { REPOSITORIES } from '../config/identifiers';
+import { REPOSITORIES } from '../../config/identifiers';
 
 @injectable()
 export class PictureGeneratorService implements IPictureGeneratorService {
