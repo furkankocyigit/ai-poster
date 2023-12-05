@@ -21,6 +21,7 @@ export class InstagramPostRepository implements IPostRepository {
         this.ig.state.generateDevice(igUserName);
     }
     async login(igUserName: string, igPassword: string) {
+        await this.ig.simulate.preLoginFlow();
         await this.ig.account.login(igUserName, igPassword);
     }
 
